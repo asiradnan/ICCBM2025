@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICCBM 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --light-bg: #F5F6F9;
+      --accent: #2A5CAA;
+      --dark-text: #0E274E;
+      --gray-text: #5A6A85;
+      --light-accent: rgba(42, 92, 170, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark-text);
+      background-color: var(--light-bg);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      height: 80px;
+      /* Increased from 60px to 80px */
+    }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .main-nav a {
+      color: var(--dark-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--accent);
+    }
+
+    .main-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--white);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--gray-text);
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .conference-details {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .detail-item i {
+      color: var(--accent);
+    }
+
+    /* About Section */
+    .about {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark-text);
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .about-content {
+      text-align: justify;
+      line-height: 1.8;
+      margin-bottom: 35px;
+      font-size: 18px;
+    }
+
+    .call-to-action {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 17px;
+      transition: background-color 0.3s;
+    }
+
+    .call-to-action:hover {
+      background-color: #1d4a8f;
+    }
+
+    /* Contact */
+    .contact {
+      padding: 80px 0;
+      background-color: var(--white);
+    }
+
+    .contact-info {
+      line-height: 1.8;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--white);
+      color: var(--dark-text);
+      padding: 50px 0 20px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      opacity: 0.8;
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--dark-text);
+      cursor: pointer;
+    }
+
+    /* Mobile menu functionality */
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--white);
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+    }
+
+    .mobile-menu li {
+      margin-bottom: 15px;
+    }
+
+    .mobile-menu a {
+      color: var(--dark-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      display: block;
+      padding: 8px 0;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      color: var(--accent);
+    }
+
+    /* Footer Styles */
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .footer-section {
+      width: 23%;
+      margin-bottom: 20px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      position: relative;
+      padding-bottom: 10px;
+      color: var(--dark-text);
+      font-weight: 600;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    address.contact-info {
+      font-style: normal;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--gray-text);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 16px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .map-section {
+      width: 27%;
+    }
+
+    .map-container {
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid #eee;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* Enhanced responsiveness */
+    @media (max-width: 992px) {
+      .main-nav ul {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .conference-details {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .footer-section {
+        width: 47%;
+      }
+
+      .map-section {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .footer-section h3 {
+        font-size: 18px;
+      }
+
+      address.contact-info,
+      .footer-links a {
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .about-content {
+        font-size: 17px;
+      }
+
+      .logo {
+        height: 70px;
+        /* Adjusted for tablet */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero .subtitle {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .about-content {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .call-to-action {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+
+      .logo {
+        height: 65px;
+        /* Adjusted for smaller tablets */
+      }
+
+      /* Add padding to header for larger logos */
+      header {
+        padding: 18px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .footer-section {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .about-content {
+        font-size: 16px;
+      }
+
+      .logo {
+        height: 60px;
+        /* Adjusted for mobile but still larger than original */
+      }
+
+      .logo-container {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <img src="/images/logo.png" alt="BBS Logo" class="logo">
+          <img src="/images/bracu_logo.png" alt="BRAC University Logo" class="logo">
+        </div>
+
+        <nav class="main-nav">
+          <button class="mobile-nav-toggle" id="mobileMenuToggle">☰</button>
+          <ul>
+            <li><a href="index.html" class="active">HOME</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+            <li><a href="committe.html">COMMITTEES</a></li>
+            <li><a href="scope.html">SCOPE</a></li>
+            <li><a href="submission.html">SUBMISSIONS</a></li>
+            <li><a href="fees.html">REGISTRATION</a></li>
+            <li><a href="awards.html">AWARDS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <ul>
+            <li><a href="index.html" class="active">HOME</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+            <li><a href="committe.html">COMMITTEES</a></li>
+            <li><a href="scope.html">SCOPE</a></li>
+            <li><a href="submission.html">SUBMISSIONS</a></li>
+            <li><a href="fees.html">REGISTRATION</a></li>
+            <li><a href="awards.html">AWARDS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>2<sup>nd</sup> International Case Conference on Business and Management (ICCBM) 2025</h1>
+      <div class="subtitle">
+        AI, Innovation & Sustainability: Rethinking Enterprise, Practice & Leadership 
+      </div>
+
+      <div class="conference-details">
+        <div class="detail-item">
+          <i>📅</i>
+          <span>Conference Date: December 18, 2025 (Thursday)</span>
+        </div>
+        <div class="detail-item">
+          <i>📍</i>
+          <span>Venue: BRAC University, Merul Badda, Dhaka - 1212</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title">About the Conference</h2>
+      <p class="about-content">
+        The rapid advancement of AI and innovative digital technologies is reshaping the landscape of
+        enterprise, leadership and professional practice across the Global South. As these economies
+        navigate industrial transformation, the integration of AI-driven innovation, digital and green business
+        models, and sustainable or circular practices becomes essential for long-term economic growth.
+        Through the unique case-based approach, this conference explores how emerging innovative
+        technologies can enhance business efficiency, drive sustainable development and redefine leadership
+        paradigms in regions often constrained by resource limitations and structural inequalities.
+        The overall goal of the conference is to provide a dynamic forum for academics, practitioners,
+        policymakers, students, and other stakeholders to explore and exchange knowledge on the
+        intersection of AI, innovation and sustainability. Through case studies and insightful discussions, the
+        conference will examine the evolving landscape of enterprise, practice, and leadership in the Global
+        South, driving innovative solutions for sustainable development and digital growth.
+      </p>
+
+      <a href="/Files/ICCBM 2025 Call for Cases and Participation Mar 2025 Rev.docx.pdf"
+        class="call-to-action" target="_blank">
+        CALL FOR PAPER / ABSTRACT / PROPOSAL
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <address class="contact-info">
+            ICCBM 2025 Steering Committee<br>
+            BRAC Business School<br>
+            Annex A, level 05<br>
+            BRAC University, Kha - 224 Bir Uttam Rafiqul Islam Avenue<br>
+            Merul Badda, Dhaka-1212<br>
+            Bangladesh<br>
+            <strong>Email:</strong> <a href="mailto:events.bbs@bracu.ac.bd">events.bbs@bracu.ac.bd</a><br>
+            <strong>Web:</strong> <a href="https://iccbm.bracu.ac.bd">https://iccbm.bracu.ac.bd</a><br>
+            <strong>Phone:</strong> +8801714057593
+          </address>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="committe.html">Committees</a></li>
+            <li><a href="scope.html">Scope</a></li>
+            <li><a href="submission.html">Submissions</a></li>
+            <li><a href="fees.html">Registration</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="Call for Conference on Financial Literacy and Economic Wellbeing_18 Feb 2025.pdf">Call for Papers</a></li>
+            <li><a href="http://www.bracu.ac.bd" target="_blank">BRAC University</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section map-section">
+          <h3>Location</h3>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.356804275593!2d90.422719!3d23.7725001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7715a40c603%3A0xec01cd75f33139f5!2z4KaG4Ka_4KaV4Ka-4KahIOCmlOCmvuCnjeCmleCmvuCmv-Cmh-Cmn-Cnh-CmsQ!5e0!3m2!1sen!2sbd!4v1712477732605!5m2!1sen!2sbd"
+              width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025. All Rights Reserved. | BRAC Business School, <a href="http://www.bracu.ac.bd"
+            target="_blank">BRAC University</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      mobileMenuToggle.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+
+</html>
